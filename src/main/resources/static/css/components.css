@@ -2,7 +2,7 @@
 	background-color: white;
 	padding-left: 0px;
 }
-
+/* POSTS */
 .card-title{
 	padding-top: 5px;
 	
@@ -14,4 +14,15 @@
 
 .card-subtitle{
 	font-size: 0.9rem;
+}
+
+/* POST DETAILS */
+article > .card-title{
+	margin-bottom: 20px;
+	
+	font-weight: bold;
+}
+
+article .card-text{
+	margin-top: 40px;
 }

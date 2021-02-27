@@ -1,4 +1,5 @@
-section > .container{
+
+.container{
 	width: 80%;
 	padding-top: 30px;
 }
@@ -7,3 +8,4 @@ section > .container{
 	max-width: 18rem;
 	margin-top: 20px;
 }
+

@@ -28,7 +28,7 @@
 			<div class="card border-primary mb-3" th:each="post : ${posts}">
 				<div class="card-header">
 					<div class="card-title">
-						<a href="#">
+						<a 	th:href="@{/posts/{id}(id=${post.id})}">
 							<h3>
 								<span th:text="${post.titulo}">
 								</span>
@@ -36,6 +36,7 @@
 						</a>
 					</div>
 				</div>
+				
 			  	<div class="card-body text-primary">
 			    	<h5 class="card-subtitle mb-2 text-muted">
 			    		<span th:text="${post.autor}"></span>
@@ -46,6 +47,7 @@
 				    	</span>
 			    	</p>
 			  	</div>
+			  	
 			</div>
 			
 		</div>
