@@ -46,9 +46,9 @@ public class CodeBlogController {
 	}
 	
 	@PostMapping(value = "newPost")
-	public string savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
+	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
-			ruturn "redirect:/newPost";
+			return "redirect:/newPost";
 		}
 		post.setData(LocalDate.now());
 		codeBlogService.save(post);

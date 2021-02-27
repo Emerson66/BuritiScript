@@ -26,3 +26,8 @@ article > .card-title{
 article .card-text{
 	margin-top: 40px;
 }
+
+/* post FORM */
+.btn{
+	margin-top: 10px;
+}
