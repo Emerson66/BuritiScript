@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html
+	xmlns:th="http://thymeleaf.org"
+>
 <head>
 	<title>CodeBlog</title>
 	<!--CSS-->
@@ -23,13 +25,26 @@
 		 		</ol>
 			</nav>
 			
-			<div class="card border-primary mb-3" style="max-width: 18rem;">
+			<div class="card border-primary mb-3" th:each="post : ${posts}">
 				<div class="card-header">
-					Header
+					<div class="card-title">
+						<a href="#">
+							<h3>
+								<span th:text="${post.titulo}">
+								</span>
+							</h3>
+						</a>
+					</div>
 				</div>
 			  	<div class="card-body text-primary">
-			    	<h5 class="card-title">Primary card title</h5>
-			    	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    	<h5 class="card-subtitle mb-2 text-muted">
+			    		<span th:text="${post.autor}"></span>
+			    		<span th:text="${post.data}"></span>
+			    	</h5>
+			    	<p class="card-text">
+				    	<span th:utext="${#strings.abbreviate(post.texto,100)}">
+				    	</span>
+			    	</p>
 			  	</div>
 			</div>
 			

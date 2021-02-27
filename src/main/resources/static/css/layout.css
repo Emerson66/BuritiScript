@@ -2,3 +2,8 @@ section > .container{
 	width: 80%;
 	padding-top: 30px;
 }
+
+.card{
+	max-width: 18rem;
+	margin-top: 20px;
+}

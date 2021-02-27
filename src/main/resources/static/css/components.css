@@ -2,3 +2,16 @@
 	background-color: white;
 	padding-left: 0px;
 }
+
+.card-title{
+	padding-top: 5px;
+	
+	color: black;
+	font-weight: bold;
+	font-family: "Open Sans",Arial,Helvetica,sans-serif;
+	word-wrap: break-word;
+}
+
+.card-subtitle{
+	font-size: 0.9rem;
+}
