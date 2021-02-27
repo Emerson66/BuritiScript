@@ -20,6 +20,5 @@ public class CodeBlogController {
 		List<Post> posts = codeBlogService.findAll();
 		mv.addObject("posts", posts);
 		return mv;
-		
 	}
 }
