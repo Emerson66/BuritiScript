@@ -1,4 +1,4 @@
-package com.buriti.codeblog.utils;
+package com.buriti.buritiscript.utils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,14 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.buriti.codeblog.model.Post;
-import com.buriti.codeblog.repository.CodeBlogRepository;
+import com.buriti.buritiscript.model.Post;
+import com.buriti.buritiscript.repository.BuritiScriptRepository;
 
 @Component
 public class DummyData { //dados fcticios
 	
 	@Autowired
-	CodeBlogRepository codeBlogRepository;
+	BuritiScriptRepository buritiScriptRepository;
 	
 //	@PostConstruct
 	public void savePosts() {
@@ -35,7 +35,7 @@ public class DummyData { //dados fcticios
         postList.add(post2);
 
         for(Post post: postList){
-            Post postSaved = codeBlogRepository.save(post);
+            Post postSaved = buritiScriptRepository.save(post);
         }
 	}
 }

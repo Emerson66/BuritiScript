@@ -1,4 +1,4 @@
-package com.buriti.codeblog.controller;
+package com.buriti.buritiscript.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,19 +8,20 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.buriti.codeblog.model.Post;
-import com.buriti.codeblog.model.service.CodeBlogService;
+import com.buriti.buritiscript.model.Post;
+import com.buriti.buritiscript.model.service.BuritiScriptService;
 
 @Controller
-public class CodeBlogController {
+public class BuritiScriptController {
 	@Autowired
-	CodeBlogService codeBlogService;
+	BuritiScriptService buritiScriptService;
 	
 	@GetMapping
 	public String redirectToPosts() {
@@ -30,7 +31,7 @@ public class CodeBlogController {
 	@GetMapping(value = "/posts")
 	public ModelAndView  getPost() {
 		ModelAndView mv = new ModelAndView("posts");
-		List<Post> posts = codeBlogService.findAll();
+		List<Post> posts = buritiScriptService.findAll();
 		mv.addObject("posts", posts);
 		
 		return mv;
@@ -39,7 +40,7 @@ public class CodeBlogController {
 	@GetMapping(value = "/posts/{id}")
 	public ModelAndView getPostDetails(@PathVariable("id") long id) {
 		ModelAndView mv = new ModelAndView("postDetails");
-		Post post = codeBlogService.findById(id);
+		Post post = buritiScriptService.findById(id);
 		mv.addObject("post",post);
 		
 		return mv;
@@ -53,8 +54,9 @@ public class CodeBlogController {
 	}
 	
 	@PostMapping(value = "newPost")
-	public ModelAndView savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes,
-			RedirectAttributes redirect) {
+	public ModelAndView savePost(@Valid Post post, BindingResult result,
+			RedirectAttributes attributes,RedirectAttributes redirect,
+			Errors erro) {
 		post.setData(LocalDate.now());
 		ModelAndView mv = new ModelAndView("postForm");
 		mv.addObject(post);
@@ -63,7 +65,7 @@ public class CodeBlogController {
 			return mv;
 		}
 		
-		codeBlogService.save(post);
+		buritiScriptService.save(post);
 		mv.setViewName("redirect:/posts");
 		return mv;
 	}

@@ -1,4 +1,4 @@
-package com.buriti.codeblog.model;
+package com.buriti.buritiscript.model;
 
 import java.time.LocalDate;
 

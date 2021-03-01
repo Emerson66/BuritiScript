@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.buriti</groupId>
-	<artifactId>codeblog</artifactId>
+	<artifactId>buritiscript</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>codeblog</name>
-	<description>um blog pra escrever</description>
+	<name>BuritiScript</name>
+	<description>Um blog para falar de Ciência, Inovação e Tecnologia</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
