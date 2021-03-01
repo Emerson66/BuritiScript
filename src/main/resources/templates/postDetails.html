@@ -1,27 +1,11 @@
 <!DOCTYPE html>
-<html
-	xmlns:th="http://thymeleaf.org"
->
-<head>
-	<title>CodeBlog</title>
-	
-	<!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-	
-	<!--CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/css/layout.css">
-	<link rel="stylesheet" type="text/css" href="/css/components.css">
-</head>
-<body>
-	<header>
-		<!-- As a link -->
-		<nav class="navbar navbar-light bg-light">
-		  <a class="navbar-brand" href="#">CodeBlog</a>
-		</nav>
-	</header>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layoutPadrao">
+
 		
-	<main>
+	<main layout:fragment="conteudo">
 		<div class="container">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
@@ -49,5 +33,5 @@
 		
 		
 	</main>
-</body>	
+	
 </html>

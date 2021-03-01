@@ -1,29 +1,19 @@
 <!DOCTYPE html>
-<html
-	xmlns:th="http://thymeleaf.org"
->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layoutPadrao">
 <head>
-	<title>CodeBlog</title>
-	<!--CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/css/layout.css">
-	<link rel="stylesheet" type="text/css" href="/css/components.css">
-	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 </head>
-<body>
-	<header>
-		<!-- As a link -->
-		<nav class="navbar navbar-light bg-light">
-		  <a class="navbar-brand" href="#">CodeBlog</a>
-		</nav>
-	</header>
+
+
 		
-	<section>
+	<section layout:fragment="conteudo">
 		<div class="container">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
@@ -34,15 +24,15 @@
 			
 			<div>
 				<th:block th:include="mensagemValidacao"></th:block>
-				<form  method="POST">
+				<form  method="POST" th:object="${post}">
 					<div class="form-group">
-						<input type="text" class="form-control" name="titulo" placeholder="Titulo*">
+						<input type="text" class="form-control" th:field="*{titulo}" placeholder="Titulo*">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" name="autor" placeholder="Autor *">
+						<input type="text" class="form-control" th:field="*{autor}" placeholder="Autor *">
 					</div>
 					
-					<textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+					<textarea id="summernote" type="text" class="form-control" th:field="*{texto}" placeholder="Texto *"></textarea>
 					
 					<small class="form-text text-muted">(*) Campos Obrigatórios</small>
 					
@@ -53,8 +43,7 @@
 			</div>
 			
 		</div>
-	</section>
-	<script>
+		<script>
 		$('#summernote').summernote({
 			placeholder: 'Texto *',
 			tabsize: 5,
@@ -63,5 +52,7 @@
 		});
 		
 	</script>
-</body>
+	</section>
+	
+
 </html>

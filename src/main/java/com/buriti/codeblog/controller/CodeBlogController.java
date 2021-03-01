@@ -22,6 +22,11 @@ public class CodeBlogController {
 	@Autowired
 	CodeBlogService codeBlogService;
 	
+	@GetMapping
+	public String redirectToPosts() {
+		return "redirect:/posts";
+	}
+	
 	@GetMapping(value = "/posts")
 	public ModelAndView  getPost() {
 		ModelAndView mv = new ModelAndView("posts");
@@ -41,19 +46,27 @@ public class CodeBlogController {
 	}
 	
 	@GetMapping(value = "/newPost")
-	public String getPostForm(){
-		return "postForm";
+	public ModelAndView getPostForm(){
+		ModelAndView mv = new ModelAndView("postForm");
+		mv.addObject(new Post());
+		return mv;
 	}
 	
 	@PostMapping(value = "newPost")
-	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes,
+			RedirectAttributes redirect) {
+		post.setData(LocalDate.now());
+		ModelAndView mv = new ModelAndView("postForm");
+		mv.addObject(post);
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
-			return "redirect:/newPost";
+			return mv;
 		}
-		post.setData(LocalDate.now());
-		codeBlogService.save(post);
-		return "redirect:/posts";
 		
+		codeBlogService.save(post);
+		mv.setViewName("redirect:/posts");
+		return mv;
 	}
+	
+	
 }
