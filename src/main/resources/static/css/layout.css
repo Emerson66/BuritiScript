@@ -1,11 +1,14 @@
-
-.container{
-	width: 80%;
-	padding-top: 30px;
+.layout-cabecalho {
+	background-color: #0a6637;
+	font-family: Ubuntu Condensed;
+	
+	box-sizing: border-box;
 }
 
-.card{
-	max-width: 18rem;
-	margin-top: 20px;
-}
+
+
+
+
+
+
 

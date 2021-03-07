@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorator="layoutPadrao">
+	layout:decorator="layoutPadrao">
 
 
+
+
+<section layout:fragment="conteudo">
+	<div class="container">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page">Posts</li>
+			</ol>
+		</nav>
 
 		
-	<section layout:fragment="conteudo">
-		<div class="container">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item active" aria-current="page">Posts</li>
-		 		</ol>
-			</nav>
-			
-			<div class="card border-primary mb-3" th:each="post : ${posts}">
-				<div class="card-header">
-					<div class="card-title">
-						<a 	th:href="@{/posts/{id}(id=${post.id})}">
-							<h3>
-								<span th:text="${post.titulo}">
-								</span>
-							</h3>
-						</a>
-					</div>
+
+		<div class="card border mb-3" th:each="post : ${posts}">
+			<div class="card-header">
+				<div class="card-title">
+					<img width="400"
+						th:src="@{/posts/mostrarImagem/{imagem}(imagem=${post.nomeImagem})}">
+					<a th:href="@{/posts/{id}(id=${post.id})}">
+						<h3 style="color: #0a6637;">
+							<span th:text="${post.titulo}"> </span>
+						</h3>
+					</a>
 				</div>
-				
-			  	<div class="card-body text-primary">
-			    	<h5 class="card-subtitle mb-2 text-muted">
-			    		<span th:text="${post.autor}"></span>
-			    		<span th:text="${post.data}"></span>
-			    	</h5>
-			    	<p class="card-text">
-				    	<span th:utext="${#strings.abbreviate(post.texto,100)}">
-				    	</span>
-			    	</p>
-			  	</div>
-			  	
 			</div>
-			
+
+			<div class="card-body text-primary">
+				<h5 class="card-subtitle mb-2 text-muted">
+					<span th:text="${post.autor}"></span> <span th:text="${post.data}"></span>
+				</h5>
+				<p class="card-text">
+					<span th:utext="${#strings.abbreviate(post.texto,100)}"> </span>
+				</p>
+			</div>
+
 		</div>
-	</section>
+
+	</div>
+</section>
 </html>

@@ -4,11 +4,14 @@
     xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     
-	<header>
+	<header class="layout-cabecalho  layout-cabecalho--home">
 		<!-- As a link -->
-		<nav class="navbar navbar-dark cabecalho">
-		  <a class="navbar-brand" href="#"><h1 class="titulo">BuritiScript</h1></a>
-		  <a href="/newPost" class="btn btn-primary" role="button">Novo Post</a>
+		<nav class="navbar navbar justify-content-between" style="background-color: #0a6637; font-family: Ubuntu Condensed;">
+		  <a class="navbar-brand" style="font-size: 1.8rem; font-weight: bold; color: white;" href="/posts">BuritiScript</a>
+		
+		    <a href="/newPost">
+		    	<button class="btn btn-primary" type="submit">Novo post</button>
+		  	</a>
 		</nav>
 	</header>
     

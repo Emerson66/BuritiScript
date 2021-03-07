@@ -1,5 +1,6 @@
 package com.buriti.buritiscript.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -14,9 +15,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="TB_POST")
-public class Post {
+public class Post implements Serializable{
 
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
@@ -32,8 +35,29 @@ public class Post {
     @NotBlank
     @Lob
     private String texto;
+    
+    private String nomeImagem;
+    
+    
 
-    public Long getId() {
+    public Post() {
+		super();
+	}
+
+	public Post(Long id, @NotBlank String titulo, @NotBlank String autor, LocalDate data, @NotBlank String texto,
+			String nomeImagem) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.data = data;
+		this.texto = texto;
+		this.nomeImagem = nomeImagem;
+	}
+
+
+
+	public Long getId() {
         return id;
     }
 
@@ -72,4 +96,39 @@ public class Post {
     public void setTexto(String texto) {
         this.texto = texto;
     }
+    
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Post other = (Post) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+    
+    
 }
