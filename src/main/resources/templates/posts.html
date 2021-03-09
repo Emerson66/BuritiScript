@@ -15,32 +15,45 @@
 			</ol>
 		</nav>
 
-		
+		<div class="layout-posts">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4" th:each="post : ${posts}">
 
-		<div class="card border mb-3" th:each="post : ${posts}">
-			<div class="card-header">
-				<div class="card-title">
-					<img width="400"
-						th:src="@{/posts/mostrarImagem/{imagem}(imagem=${post.nomeImagem})}">
-					<a th:href="@{/posts/{id}(id=${post.id})}">
-						<h3 style="color: #0a6637;">
-							<span th:text="${post.titulo}"> </span>
-						</h3>
-					</a>
+						<article class="post">
+							<img class="post__img"
+								th:src="@{/posts/mostrarImagem/{imagem}(imagem=${post.nomeImagem})}">
+							
+							<div class="post__conteudo">
+								
+								<a class="post__conteudo-link" th:href="@{/posts/{id}(id=${post.id})}">
+									<div class="post__type">Artigo</div>
+									<h2 class="post__titulo" th:text="${post.titulo}"></h2>
+
+									<footer class="posts__rodape">
+										<h5 class="card-subtitle mb-2 text-muted">
+											<i class="material-icons">person_outline</i><span class="post__autor" th:text="${post.autor}"> </span><br>
+												<i class="material-icons">date_ranger</i><span class="post__data"
+												th:text="${post.data}"></span>
+										</h5>
+									</footer>
+								</a>
+							</div>
+							
+						</article>
+
+					</div>
+
 				</div>
 			</div>
-
-			<div class="card-body text-primary">
-				<h5 class="card-subtitle mb-2 text-muted">
-					<span th:text="${post.autor}"></span> <span th:text="${post.data}"></span>
-				</h5>
-				<p class="card-text">
-					<span th:utext="${#strings.abbreviate(post.texto,100)}"> </span>
-				</p>
-			</div>
-
 		</div>
-
+		
+		</div>
+		<footer class="layout-rodape">
+			<div class="container">
+        		<p>&copy; BuritiScript. Todos os direitos reservados.</p>
+      		</div>
+		</footer>
 	</div>
 </section>
 </html>

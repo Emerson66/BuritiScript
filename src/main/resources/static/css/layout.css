@@ -1,12 +1,26 @@
 .layout-cabecalho {
-	background-color: #0a6637;
+	background-color: #15824B;
 	font-family: Ubuntu Condensed;
 	
 	box-sizing: border-box;
 }
 
+.layout-posts {
+  padding: 80px 0;
+}
+@media(max-width: 749px) {
+  .layout-posts .row > div:not(.ultima-coluna) {
+    margin-bottom: 40px;
+  }
+}
+.layout-rodape {
+  padding: 40px 0;
 
+  background-color: #15824B;
 
+  color: #fff;
+  text-align: center;
+}
 
 
 
