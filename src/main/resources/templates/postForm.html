@@ -31,7 +31,8 @@
 
 		<div>
 			<th:block th:include="mensagemValidacao"></th:block>
-			<form method="POST" th:object="${post}" enctype="multipart/form-data">
+			<form method="POST" th:object="${post}" enctype="multipart/form-data" action="/newPost">
+				<input type="hidden" th:field="*{id}"/>
 			
 				<!--upload---------------------------  -->
 
@@ -43,7 +44,7 @@
 					<div class="image-upload-wrap">
 					
 						<input class="file-upload-input" type='file'
-							onchange="readURL(this);" accept="image/*" name="imagem"/>
+							onchange="readURL(this);" accept="image/*" th:value="*{nomeImagem}" name="imagem"/>
 							
 						<div class="drag-text">
 							<h3>Arraste e solte a imagem aqui ou selecione add Imagem</h3>
