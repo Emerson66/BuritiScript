@@ -23,23 +23,24 @@
 						<article class="post">
 							<img class="post__img"
 								th:src="@{/posts/mostrarImagem/{imagem}(imagem=${post.nomeImagem})}">
-							
+
 							<div class="post__conteudo">
-								
-								<a class="post__conteudo-link" th:href="@{/posts/{id}(id=${post.id})}">
+
+								<a class="post__conteudo-link"
+									th:href="@{/posts/{id}(id=${post.id})}">
 									<div class="post__type">Artigo</div>
 									<h2 class="post__titulo" th:text="${post.titulo}"></h2>
-
 									<footer class="posts__rodape">
 										<h5 class="card-subtitle mb-2 text-muted">
-											<i class="material-icons">person_outline</i><span class="post__autor" th:text="${post.autor}"> </span><br>
-												<i class="material-icons">date_ranger</i><span class="post__data"
-												th:text="${post.data}"></span>
+											<i class="material-icons">person_outline</i><span
+												class="post__autor" th:text="${post.autor}"> </span><br>
+											<i class="material-icons">date_ranger</i><span
+												class="post__data" th:text="${post.data}"></span>
 										</h5>
 									</footer>
 								</a>
 							</div>
-							
+
 						</article>
 
 					</div>
@@ -47,13 +48,13 @@
 				</div>
 			</div>
 		</div>
-		
-		</div>
-		<footer class="layout-rodape">
-			<div class="container">
-        		<p>&copy; BuritiScript. Todos os direitos reservados.</p>
-      		</div>
-		</footer>
+
 	</div>
+	<footer class="layout-rodape">
+		<div class="container">
+			<p>&copy; BuritiScript. Todos os direitos reservados.</p>
+		</div>
+	</footer>
+	
 </section>
 </html>
