@@ -1,5 +1,6 @@
 package com.buriti.buritiscript.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,12 +12,21 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	@Autowired
+	ImplementsUserDetailsService implementsUserDetailsService;
+	
 	private static final String[] AUTH_LIST = {
 			"/",
 			"/posts",
 			"/posts/{id}",
 			"/posts/{id}",
-			"/posts/mostrarImagem/{imagem}"
+			"/posts/mostrarImagem/{imagem}",
+			
+			"/usuarios",
+			"/usuarios/novo",
+			
+			"/login"
 	};
 	
 	@Override
@@ -25,13 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers(AUTH_LIST).permitAll()
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll()
+		.and().formLogin().loginPage("/login")
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.inMemoryAuthentication()
-			.withUser("emerson").password("{noop}sudo@12345").roles("ADMIN");
+		auth.userDetailsService(implementsUserDetailsService);
 	}
 	
 	@Override
