@@ -3,23 +3,27 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layoutPadrao">
-<head>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-</head>
-
-
-
-<section layout:fragment="conteudo">
 	
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/login-component.css">
+	
+</head>
+<section layout:fragment="conteudo">
+	<main class="login">
+		<div class="login__container">
+			<h1 class="login__title">Login</h1>
+			<form class="login__form">
+				<input class="login__input" type="text" placeholder="Login">
+				<span class="login__input-border"></span>
+				<input class="login__input" type="password" placeholder="Senha">
+				<span class="login__input-border"></span>
+				<button class="login__submit">Login</button>
+				<a href="#" class="login__reset">Esqueci minha senha</a>
+			</form>
+			
+			
+		</div>
+	</main>
 </section>
 
 

@@ -91,6 +91,7 @@ public class PostController {
 		return mv;
 	}
 	 
+	@SuppressWarnings("null")
 	@GetMapping("/posts/mostrarImagem/{imagem}")
 	@ResponseBody
 	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
@@ -101,7 +102,6 @@ public class PostController {
 		
 		}
 		return null;
-		
 	}
 	
 	@GetMapping("/newPost/{id}")

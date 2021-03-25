@@ -18,9 +18,5 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@GetMapping("/login")
-	public ModelAndView irParaLogin(Usuario usuario) {	
-		ModelAndView mv = new ModelAndView("loginForm");
-		return mv;
-	}
+	
 }

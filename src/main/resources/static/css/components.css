@@ -11,16 +11,22 @@ a{
 		BOTAO
 \*--------------------*/
 .botao {
-	color: #fff;
+	height: 38px;
+	
+	padding: 6px 12px;
+	color: #15824B;
+	border-radius: .25rem;
 	border: none;
 	line-height: normal;
-	font-size: 1em;
+	font-family: Ubuntu Condensed;
+	font-size: 16px;
+	cursor: pointer;
 	text-decoration: none;
 }
 
 .botao:hover, .botao:focus {
 	background-color: #aaa;
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 }
 
@@ -249,6 +255,4 @@ a{
     margin-bottom: 10px;
     padding: 5px 27px 5px 27px;
 }
-
-
 
