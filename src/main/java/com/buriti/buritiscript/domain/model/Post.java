@@ -1,4 +1,4 @@
-package com.buriti.buritiscript.model;
+package com.buriti.buritiscript.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;

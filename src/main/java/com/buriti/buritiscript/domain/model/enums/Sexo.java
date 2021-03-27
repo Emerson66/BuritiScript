@@ -1,4 +1,4 @@
-package com.buriti.buritiscript.model.enums;
+package com.buriti.buritiscript.domain.model.enums;
 
 public enum Sexo {
 	

@@ -11,24 +11,27 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.buriti.buritiscript.model.Post;
-import com.buriti.buritiscript.model.service.BuritiScriptService;
-
+import com.buriti.buritiscript.domain.model.Post;
+import com.buriti.buritiscript.domain.service.PostService;
+@Controller
+@RequestMapping("/")
 public class PostController {
 	private static String caminhoImg = "/home/emerson/Imagens/buritiScript/img/";
 
 	@Autowired
-	BuritiScriptService buritiScriptService;
+	PostService postService;
 
 	@GetMapping
 	public String redirectToPosts() {
@@ -39,7 +42,7 @@ public class PostController {
 	@GetMapping(value = "/posts")
 	public ModelAndView getPost() {
 		ModelAndView mv = new ModelAndView("posts");
-		List<Post> posts = buritiScriptService.findAll();
+		List<Post> posts = postService.findAll();
 		mv.addObject("posts", posts);
 
 		return mv;
@@ -48,7 +51,7 @@ public class PostController {
 	@GetMapping(value = "/posts/{id}")
 	public ModelAndView getPostDetails(@PathVariable("id") long id) {
 		ModelAndView mv = new ModelAndView("postDetails");
-		Post post = buritiScriptService.findById(id);
+		Post post = postService.findById(id);
 		mv.addObject("post", post);
 
 		return mv;
@@ -74,7 +77,7 @@ public class PostController {
 		}
 		mv.addObject(post);
 
-		buritiScriptService.save(post);
+		postService.save(post);
 		try {
 			if (!imagem.isEmpty()) {
 				byte[] bytes = imagem.getBytes();
@@ -86,7 +89,7 @@ public class PostController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		buritiScriptService.save(post);
+		postService.save(post);
 		mv.setViewName("redirect:/posts");
 		return mv;
 	}

@@ -2,15 +2,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     
 	<header class="layout-cabecalho  layout-cabecalho--home">
 		<!-- As a link -->
 		<nav class="navbar navbar justify-content-between" style=" font-family: Ubuntu Condensed;">
 		  <a class="navbar-brand" style="font-size: 1.8rem; font-weight: bold; color: white;" href="/posts">BuritiScript</a>
 
-		    <a href="/newPost">
-		    	<button class="botao" type="submit">Novo post</button>
+		    <a href="/logout">
+		    	<button sec:authorize="isAuthenticated()" class="botao" type="submit">Logout</button>
+		    </a>
+		    <a href="/login">
+		    	<button th:if="!${#httpServletRequest.requestURI.contains('/login')}" sec:authorize="isAnonymous()" class="botao" type="submit">Login</button>
 		  	</a>
 		</nav>
 	</header>

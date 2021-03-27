@@ -1,4 +1,4 @@
-package com.buriti.buritiscript.model;
+package com.buriti.buritiscript.domain.model;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.buriti.buritiscript.model.enums.Sexo;
+import com.buriti.buritiscript.domain.model.enums.Sexo;
 
 @Entity
 public class Usuario implements UserDetails{
