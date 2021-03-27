@@ -9,11 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.buriti.buritiscript.domain.model.enums.Sexo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Usuario implements UserDetails{
@@ -23,12 +27,16 @@ public class Usuario implements UserDetails{
 	
 	@Id
 	private String login;
+	@NotBlank
 	private String nome;
 	private String pseudonimo;
+	@Email
 	private String email;
 	private String senha;
+	@NotNull
 	private Sexo sexo;
-	private LocalDate dataNscimento;
+	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+	private LocalDate dataNascimento;
 	
 	@ManyToMany
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(
@@ -50,7 +58,7 @@ public class Usuario implements UserDetails{
 		this.email = email;
 		this.senha = senha;
 		this.sexo = sexo;
-		this.dataNscimento = dataNscimento;
+		this.dataNascimento = dataNscimento;
 	}
 	
 	public String getLogin() {
@@ -101,12 +109,12 @@ public class Usuario implements UserDetails{
 		this.sexo = sexo;
 	}
 
-	public LocalDate getDataNscimento() {
-		return dataNscimento;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setDataNscimento(LocalDate dataNscimento) {
-		this.dataNscimento = dataNscimento;
+	public void setDataNscimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 	
 	
@@ -137,7 +145,7 @@ public class Usuario implements UserDetails{
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	@Override
 	public boolean isAccountNonLocked() {

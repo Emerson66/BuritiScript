@@ -12,10 +12,10 @@
 	<main class="login">
 		<div class="login__container">
 			<h1 class="login__title">Login</h1>
-			<form class="login__form">
-				<input class="login__input" type="text" placeholder="Login">
+			<form class="login__form" th:action="@{/login}" th:object="${usuario}" method="post">
+				<input class="login__input" th:name="username" type="text" placeholder="Login">
 				<span class="login__input-border"></span>
-				<input class="login__input" type="password" placeholder="Senha">
+				<input class="login__input" th:name="password" type="password" placeholder="Senha">
 				<span class="login__input-border"></span>
 				<button class="login__submit">Login</button>
 				<a href="#" class="login__reset">Esqueci minha senha</a>

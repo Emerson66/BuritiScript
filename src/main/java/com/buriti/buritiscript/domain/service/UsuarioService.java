@@ -8,4 +8,6 @@ public interface UsuarioService{
 	List<Usuario> findAll();
 	Usuario findById(String login);
 	Usuario save(Usuario usuario0);
+	
+	void criptografaSenha(Usuario usuario);
 }

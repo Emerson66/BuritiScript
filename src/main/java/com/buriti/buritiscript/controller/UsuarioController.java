@@ -1,13 +1,18 @@
 package com.buriti.buritiscript.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buriti.buritiscript.domain.model.Usuario;
+import com.buriti.buritiscript.domain.model.enums.Sexo;
 import com.buriti.buritiscript.domain.service.UsuarioService;
 
 @Controller
@@ -27,9 +32,14 @@ public class UsuarioController {
 	@PostMapping
 	public ModelAndView salvar(Usuario usuario) {
 		
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("posts");
 		mv.addObject(usuario);
 		usuarioService.save(usuario);
 		return mv;
+	}
+	
+	@ModelAttribute("sexo")
+	public List<Sexo> sexos(){
+		return Arrays.asList(Sexo.values());
 	}
 }
