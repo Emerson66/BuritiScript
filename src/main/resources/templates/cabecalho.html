@@ -9,13 +9,15 @@
 		<!-- As a link -->
 		<nav class="navbar navbar justify-content-between" style=" font-family: Ubuntu Condensed;">
 		  <a class="navbar-brand" style="font-size: 1.8rem; font-weight: bold; color: white;" href="/posts">BuritiScript</a>
-
-		    <a href="/logout">
-		    	<button sec:authorize="isAuthenticated()" class="botao" type="submit">Logout</button>
-		    </a>
-		    <a href="/login">
-		    	<button th:if="!${#httpServletRequest.requestURI.contains('/login')}" sec:authorize="isAnonymous()" class="botao" type="submit">Login</button>
-		  	</a>
+			<div class="navegacao__itens">
+			    <a href="/logout">
+			    	<button sec:authorize="isAuthenticated()" class="botao" type="submit">Logout</button>
+			    </a>
+			    
+			    <a href="/login">
+			    	<button th:if="!${#httpServletRequest.requestURI.contains('/login')}" sec:authorize="isAnonymous()" class="botao" type="submit">Login</button>
+			  	</a>
+		  	</div>
 		</nav>
 	</header>
     
