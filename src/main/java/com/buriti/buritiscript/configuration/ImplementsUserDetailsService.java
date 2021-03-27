@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import com.buriti.buritiscript.domain.model.Usuario;
-import com.buriti.buritiscript.repository.UsuarioRepository;
+import com.buriti.buritiscript.domain.repository.UsuarioRepository;
 
 @Repository
 public class ImplementsUserDetailsService implements UserDetailsService{

@@ -2,9 +2,13 @@ package com.buriti.buritiscript.domain.model;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +29,13 @@ public class Usuario implements UserDetails{
 	private String senha;
 	private Sexo sexo;
 	private LocalDate dataNscimento;
+	
+	@ManyToMany
+	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(
+			name = "usuario_id",referencedColumnName = "login"),
+			inverseJoinColumns = @JoinColumn(
+					name = "role_id", referencedColumnName = "nomeRole"))
+	private List<Role> roles;
 	
 	public Usuario() {
 		super();
@@ -96,6 +107,16 @@ public class Usuario implements UserDetails{
 
 	public void setDataNscimento(LocalDate dataNscimento) {
 		this.dataNscimento = dataNscimento;
+	}
+	
+	
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override

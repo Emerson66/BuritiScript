@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.buriti.buritiscript.domain.model.Post;
+import com.buriti.buritiscript.domain.repository.PostRepository;
 import com.buriti.buritiscript.domain.service.PostService;
-import com.buriti.buritiscript.repository.PostRepository;
 
 
 

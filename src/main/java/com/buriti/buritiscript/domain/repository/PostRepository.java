@@ -1,4 +1,4 @@
-package com.buriti.buritiscript.repository;
+package com.buriti.buritiscript.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
