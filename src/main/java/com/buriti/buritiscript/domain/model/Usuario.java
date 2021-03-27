@@ -13,11 +13,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.buriti.buritiscript.domain.model.enums.Sexo;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 
 @Entity
 public class Usuario implements UserDetails{
@@ -35,7 +37,8 @@ public class Usuario implements UserDetails{
 	private String senha;
 	@NotNull
 	private Sexo sexo;
-	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+	
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataNascimento;
 	
 	@ManyToMany
@@ -47,10 +50,10 @@ public class Usuario implements UserDetails{
 	
 	public Usuario() {
 		super();
-	 }
+	}
 	
-	public Usuario(String login, String nome, String pseudonimo, String email, String senha, Sexo sexo,
-			LocalDate dataNscimento) {
+	public Usuario(String login, @NotBlank String nome, String pseudonimo, @Email String email, String senha,
+			@NotNull Sexo sexo, LocalDate dataNascimento, List<Role> roles) {
 		super();
 		this.login = login;
 		this.nome = nome;
@@ -58,9 +61,10 @@ public class Usuario implements UserDetails{
 		this.email = email;
 		this.senha = senha;
 		this.sexo = sexo;
-		this.dataNascimento = dataNscimento;
+		this.dataNascimento = dataNascimento;
+		this.roles = roles;
 	}
-	
+
 	public String getLogin() {
 		return login;
 	}
@@ -108,16 +112,14 @@ public class Usuario implements UserDetails{
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
-
+	
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNscimento(LocalDate dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	
-	
 
 	public List<Role> getRoles() {
 		return roles;

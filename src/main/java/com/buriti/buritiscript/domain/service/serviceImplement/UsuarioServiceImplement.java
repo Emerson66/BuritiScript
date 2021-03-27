@@ -35,8 +35,8 @@ public class UsuarioServiceImplement implements UsuarioService{
 	@Override
 	public void criptografaSenha(Usuario usuario) {
 		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-		
-		
 	}
+
+	
 
 }
