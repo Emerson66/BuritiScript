@@ -40,7 +40,7 @@ public class PostController {
 	}
 
 	@GetMapping(value = "/posts")
-	public ModelAndView getPost() {
+	public ModelAndView getPosts() {
 		ModelAndView mv = new ModelAndView("posts");
 		List<Post> posts = postService.findAll();
 		mv.addObject("posts", posts);
@@ -58,15 +58,16 @@ public class PostController {
 	}
 
 	@GetMapping(value = "/newPost")
-	public ModelAndView getPostForm() {
+	public ModelAndView novoPost() {
 		ModelAndView mv = new ModelAndView("postForm");
 		mv.addObject(new Post());
 		return mv;
 	}
 
 	@PostMapping(value = "newPost")
-	public ModelAndView savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes,
-			RedirectAttributes redirect, @RequestParam("imagem") MultipartFile imagem) {
+	public ModelAndView salvar(@Valid Post post, BindingResult result,
+			RedirectAttributes attributes,RedirectAttributes redirect,
+			@RequestParam("imagem") MultipartFile imagem) {
 
 		post.setData(LocalDate.now());
 		ModelAndView mv = new ModelAndView("postForm");
@@ -108,7 +109,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/newPost/{id}")
-	public ModelAndView editaPost(@PathVariable("id") Post post) {
+	public ModelAndView editar(@PathVariable("id") Post post) {
 		ModelAndView mv = new ModelAndView("postForm");
 		mv.addObject(post);
 		
