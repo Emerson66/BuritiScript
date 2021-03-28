@@ -16,4 +16,9 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("loginForm");
 		return mv;
 	}
+	
+	@GetMapping("/error")
+	public String loginError() {
+		return "redirect:/login";
+	}
 }

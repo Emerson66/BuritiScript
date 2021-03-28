@@ -31,7 +31,7 @@
 
 		<div>
 			<th:block th:include="mensagemValidacao"></th:block>
-			<form method="POST" th:object="${post}" enctype="multipart/form-data" action="/newPost">
+			<form method="POST" th:object="${post}" enctype="multipart/form-data" action="/posts">
 				<input type="hidden" th:field="*{id}"/>
 			
 				<!--upload---------------------------  -->
@@ -93,7 +93,7 @@
 	</script>
 	<script class="jsbin"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/fileUpload.js"></script>
+		<script type="text/javascript" src="/js/fileUpload.js"></script><!--  -->
 </section>
 
 

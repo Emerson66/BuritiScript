@@ -6,6 +6,14 @@ a{
 	text-decoration: none;
 }
 
+.menu_item{
+	color: white;
+	padding: 16px;	
+}
+
+.menu_item:hover{
+	color: white;
+}
 
 /*--------------------*\
 		BOTAO
@@ -188,9 +196,8 @@ a{
 	box-sizing: border-box;
 	padding: 0px;
 	
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	font-size: 1.4rem; /* 14px */
-	background-color: #fdfdfd;
 }
 
 .post__conteudo{
@@ -202,9 +209,10 @@ a{
 	text-decoration: none;	
 }
 .post__img{
-  padding: auto;
-  width: 100%;
-  border-radius: 24px 24px 0% 0%;
+	min-height:175px;	
+  	padding: auto;
+  	width: 100%;
+  	border-radius: 24px 24px 0% 0%;
   
   	
 }

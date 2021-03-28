@@ -2,6 +2,7 @@ package com.buriti.buritiscript.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -29,11 +30,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			
 			"/login"
 	};
+	private static final String[] IGNORE_LIST = {
+			"/css/**",
+			"/js/**"
+	};
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(AUTH_LIST).permitAll()
+		.antMatchers(HttpMethod.GET, "/posts/novo").hasAnyRole("ADMIN")
+		.antMatchers(HttpMethod.POST, "/posts").hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll()
 		.and().formLogin().loginPage("/login")
@@ -48,6 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override 
 	public void configure(WebSecurity web) throws Exception{
-		web.ignoring().antMatchers("/css/**");
+		web.ignoring().antMatchers(IGNORE_LIST);
 	}
 }

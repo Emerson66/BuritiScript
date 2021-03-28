@@ -28,7 +28,7 @@ import com.buriti.buritiscript.domain.service.PostService;
 @Controller
 @RequestMapping("/")
 public class PostController {
-	private static String caminhoImg = "/home/emerson/Imagens/buritiScript/img/";
+	private static String caminhoImg = "/home/emreson/Imagens/buritiScript/img/";
 
 	@Autowired
 	PostService postService;
@@ -57,14 +57,14 @@ public class PostController {
 		return mv;
 	}
 
-	@GetMapping(value = "/newPost")
+	@GetMapping(value = "/posts/novo")
 	public ModelAndView novoPost() {
 		ModelAndView mv = new ModelAndView("postForm");
 		mv.addObject(new Post());
 		return mv;
 	}
 
-	@PostMapping(value = "newPost")
+	@PostMapping(value = "/posts")
 	public ModelAndView salvar(@Valid Post post, BindingResult result,
 			RedirectAttributes attributes,RedirectAttributes redirect,
 			@RequestParam("imagem") MultipartFile imagem) {
@@ -95,7 +95,6 @@ public class PostController {
 		return mv;
 	}
 	 
-	@SuppressWarnings("null")
 	@GetMapping("/posts/mostrarImagem/{imagem}")
 	@ResponseBody
 	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
@@ -108,7 +107,7 @@ public class PostController {
 		return null;
 	}
 	
-	@GetMapping("/newPost/{id}")
+	@GetMapping("/posts/novo/{id}")
 	public ModelAndView editar(@PathVariable("id") Post post) {
 		ModelAndView mv = new ModelAndView("postForm");
 		mv.addObject(post);

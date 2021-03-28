@@ -34,7 +34,7 @@ public class UsuarioController {
 	public ModelAndView salvar(@Validated Usuario usuario) {
 		
       
-		ModelAndView mv = new ModelAndView("posts");
+		ModelAndView mv = new ModelAndView("loginForm");
 		mv.addObject(usuario);
 		usuarioService.save(usuario);
 		return mv;
