@@ -17,11 +17,11 @@ import com.buriti.buritiscript.domain.repository.UsuarioRepository;
 public class ImplementsUserDetailsService implements UserDetailsService{
 
 	@Autowired
-	private UsuarioRepository ur;
+	private UsuarioRepository usuarioRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		Usuario usuario = ur.findByLogin(login);
+		Usuario usuario = usuarioRepository.findByLogin(login);
 		
 		if(usuario == null){
 			throw new UsernameNotFoundException("Usuario não encontrado!");

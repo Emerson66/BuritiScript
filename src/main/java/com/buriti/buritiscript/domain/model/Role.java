@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
+@Table(name="TB_ROLE")
 public class Role implements GrantedAuthority{
 	
 	
@@ -17,7 +19,7 @@ public class Role implements GrantedAuthority{
 	@Id
 	private String nomeRole;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "roles")
 	private List<Usuario> usuarios;
 	public String getNomeRole() {
 		return nomeRole;

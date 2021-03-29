@@ -38,9 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
-		.antMatchers(AUTH_LIST).permitAll()
-		.antMatchers(HttpMethod.GET, "/posts/novo").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/posts").hasAnyRole("ADMIN")
+		.antMatchers(HttpMethod.GET, AUTH_LIST).permitAll()
+		.antMatchers(HttpMethod.GET, "/posts/novo").hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST, "/posts").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll()
 		.and().formLogin().loginPage("/login")
@@ -52,6 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(implementsUserDetailsService)
 		.passwordEncoder(new BCryptPasswordEncoder());
 	}
+	
+
 	
 	@Override 
 	public void configure(WebSecurity web) throws Exception{

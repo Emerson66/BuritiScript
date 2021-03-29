@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,7 @@ import com.buriti.buritiscript.domain.model.enums.Sexo;
 
 
 @Entity
+@Table(name="TB_USUARIO")
 public class Usuario implements UserDetails{
 	
 	
