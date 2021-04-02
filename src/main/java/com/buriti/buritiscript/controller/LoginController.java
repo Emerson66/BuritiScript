@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.buriti.buritiscript.domain.model.Usuario;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping
 public class LoginController {
 	
 	@GetMapping("/login")
