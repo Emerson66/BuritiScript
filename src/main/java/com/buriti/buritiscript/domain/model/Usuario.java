@@ -19,6 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.buriti.buritiscript.domain.model.enums.Sexo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -36,6 +37,7 @@ public class Usuario implements UserDetails{
 	private String pseudonimo;
 	@Email
 	private String email;
+	@JsonIgnore
 	private String senha;
 	@NotNull
 	private Sexo sexo;

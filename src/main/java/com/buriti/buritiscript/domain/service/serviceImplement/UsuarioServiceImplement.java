@@ -14,7 +14,11 @@ import com.buriti.buritiscript.domain.service.UsuarioService;
 public class UsuarioServiceImplement implements UsuarioService{
 	
 	@Autowired
-	UsuarioRepository usuarioRepository;
+	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder; 
+	
 	
 	@Override
 	public List<Usuario> findAll() {
@@ -34,7 +38,8 @@ public class UsuarioServiceImplement implements UsuarioService{
 
 	@Override
 	public void criptografaSenha(Usuario usuario) {
-		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+		bCryptPasswordEncoder.encode(usuario.getSenha());
+//		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 	}
 
 	

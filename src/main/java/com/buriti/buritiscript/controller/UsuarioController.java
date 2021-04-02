@@ -21,7 +21,7 @@ import com.buriti.buritiscript.domain.service.UsuarioService;
 public class UsuarioController {
 	
 	@Autowired
-	UsuarioService usuarioService;
+	private UsuarioService usuarioService;
 	
 	@GetMapping("/novo")
 	public ModelAndView novoUsuario(Usuario usuario) {	
