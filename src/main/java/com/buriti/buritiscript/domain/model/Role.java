@@ -25,7 +25,6 @@ public class Role implements GrantedAuthority{
 		return nomeRole;
 	}
 
-
 	public void setNomeRole(String nomeRole) {
 		this.nomeRole = nomeRole;
 	}
