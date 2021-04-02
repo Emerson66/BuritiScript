@@ -42,6 +42,11 @@ public class UsuarioServiceImplement implements UsuarioService{
 //		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 	}
 
+	@Override
+	public void relacionaRoleAoUsuario(String role) {
+		 
+	}
+
 	
 
 }

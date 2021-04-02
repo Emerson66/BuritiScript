@@ -9,4 +9,5 @@ public interface UsuarioService{
 	Usuario findById(String login);
 	Usuario save(Usuario usuario0);
 	void criptografaSenha(Usuario usuario);
+	void relacionaRoleAoUsuario(String role);
 }
