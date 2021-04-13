@@ -132,7 +132,7 @@ public class Usuario implements UserDetails{
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -168,5 +168,4 @@ public class Usuario implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
 }

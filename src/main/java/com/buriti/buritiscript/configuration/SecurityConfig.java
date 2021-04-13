@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
@@ -20,7 +22,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	ImplementsUserDetailsService implementsUserDetailsService;
+	UserDetailsService userDetailsService;
+	@Autowired
+	JWTUtil jwtUtil;
+	
 	
 	private static final String[] PUBLIC_MATCHERS_GET = {
 			"/",
@@ -49,7 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and().formLogin().loginPage("/login")
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 		
-//		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
 	@Bean
@@ -64,7 +70,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 	
-
+	@Override 
+	public void configure(AuthenticationManagerBuilder auth) throws Exception{
+		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+	}
 	
 	@Override 
 	public void configure(WebSecurity web) throws Exception{
