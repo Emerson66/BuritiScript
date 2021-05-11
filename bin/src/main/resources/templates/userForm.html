@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
+<head>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.min.css">
+	
+</head>
+
+<section layout:fragment="conteudo">
+	<div class="container">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item" aria-current="page"><a
+					href="/posts">Posts</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Novo
+					Usuário</li>
+			</ol>
+		</nav>
+
+		<div class="container">
+			<th:block th:include="mensagemValidacao"></th:block>
+			<form method="POST" th:object="${usuario}" enctype="multipart/form-data"
+				action="/usuarios">
+
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="form-group">
+							<input type="text" class="form-control col" th:field="*{login}" placeholder="Login*">
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<input type="text" class="form-control" th:field="*{nome}" placeholder="Nome*">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<input type="text" class="form-control col col-sm-3" th:field="*{pseudonimo}" placeholder="Pseudônimo">
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control col col-sm-4" th:field="*{email}" placeholder="E-mail*">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control col col-sm-3" th:field="*{senha}" placeholder="Senha*">
+				</div>
+				
+				<div class="form-group">
+						<select  class="col-sm-2 form-control" name="sexo">
+							<option th:each="sexo : ${sexo}" th:value="${sexo}" th:text="${sexo.descricao}"></option>
+						
+						</select>
+				</div>
+				<small class="form-text text-muted">(*) Campos Obrigatórios</small>
+
+				<button type="submit" class="btn btn-primary">Publicar</button>
+				<a href="/posts" class="btn btn-light" role="button">Cancelar</a>
+
+			</form>
+		</div>
+
+	</div>
+</section>
+
+
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
+<head>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+</head>
+
+
+
+<section layout:fragment="conteudo">
+	<div class="container">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item" aria-current="page"><a
+					href="/posts">Posts</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Novo
+					Post</li>
+			</ol>
+		</nav>
+
+		<div>
+			<th:block th:include="mensagemValidacao"></th:block>
+			<form method="POST" th:object="${post}" enctype="multipart/form-data" action="/posts">
+				<input type="hidden" th:field="*{id}"/>
+			
+				<!--upload---------------------------  -->
+
+				<div class="file-upload">
+					<button class="file-upload-btn" type="button"
+						onclick="$('.file-upload-input').trigger( 'click' )">Add
+						Imagem</button>
+
+					<div class="image-upload-wrap">
+					
+						<input class="file-upload-input" type='file'
+							onchange="readURL(this);" accept="image/*" th:value="*{nomeImagem}" name="imagem"/>
+							
+						<div class="drag-text">
+							<h3>Arraste e solte a imagem aqui ou selecione add Imagem</h3>
+						</div>
+					</div>
+					<div class="file-upload-content">
+						<img class="file-upload-image" src="#" alt="imagem" />
+						<div class="image-title-wrap">
+							<button type="button" onclick="removeUpload()"
+								class="remove-image">
+								Remove <span class="image-title">Uploaded Image</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!--------------------------------------------->
+				<div class="form-group">
+					<input type="text" class="form-control" th:field="*{titulo}"
+						placeholder="Titulo*">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" th:field="*{autor}"
+						placeholder="Autor *">
+				</div>
+				
+				<textarea id="summernote" name="texto" type="text" class="form-control"
+					th:field="*{texto}" placeholder="Texto *"></textarea>
+
+				<small class="form-text text-muted">(*) Campos Obrigatórios</small>
+
+				<button type="submit" class="btn btn-primary">Publicar</button>
+				<a href="/posts" class="btn btn-light" role="button">Cancelar</a>
+
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$('#summernote').summernote({
+			placeholder: 'Texto *',
+			tabsize: 5,
+			height: 300,
+			
+		});
+		
+	</script>
+	<script class="jsbin"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/fileUpload.js"></script><!--  -->
+</section>
+
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
+	
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/login-component.css">
+	
+</head>
+<section layout:fragment="conteudo">
+	<main class="login">
+		<div class="login__container">
+			<h1 class="login__title">Login</h1>
+			<form class="login__form" th:action="@{/login}" th:object="${usuario}" method="POST">
+				<input class="login__input" th:name="username" type="text" placeholder="Login">
+				<span class="login__input-border"></span>
+				<input class="login__input" th:name="password" type="password" placeholder="Senha">
+				<span class="login__input-border"></span>
+				<button class="login__submit">Login</button>
+				<a href="#" class="login__reset">Esqueci minha senha</a>
+				<a th:href="@{/usuarios/novo}" class="login__register">Cadastrar</a>
+			</form>
+			
+			
+		</div>
+	</main>
+</section>
+
+
+</html>

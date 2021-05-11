@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
+
+
+
+
+<section layout:fragment="conteudo">
+	<div class="container">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page">Posts</li>
+			</ol>
+		</nav>
+
+		<div class="layout-posts">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4" th:each="post : ${posts}">
+
+						<article class="post">
+							<img class="post__img"
+								th:src="@{/posts/mostrarImagem/{imagem}(imagem=${post.nomeImagem})}">
+
+							<div class="post__conteudo">
+
+								<a class="post__conteudo-link"
+									th:href="@{/posts/{id}(id=${post.id})}">
+									<div class="post__type">Artigo</div>
+									<h2 class="post__titulo" th:text="${post.titulo}"></h2>
+									<footer class="posts__rodape">
+										<h5 class="card-subtitle mb-2 text-muted">
+											<i class="material-icons">person_outline</i><span
+												class="post__autor" th:text="${post.autor}"> </span><br>
+											<i class="material-icons">date_ranger</i><span
+												class="post__data" th:text="${post.data}"></span>
+										</h5>
+									</footer>
+								</a>
+							</div>
+
+						</article>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<footer class="layout-rodape">
+		<div class="container">
+			<p>&copy; BuritiScript. Todos os direitos reservados.</p>
+		</div>
+	</footer>
+	
+</section>
+</html>
