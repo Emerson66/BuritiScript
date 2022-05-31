@@ -16,7 +16,7 @@
 	<name>BuritiScript</name>
 	<description>Um blog para falar de Ciência, Inovação e Tecnologia</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
