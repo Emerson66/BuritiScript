@@ -1,0 +1,23 @@
+version: '3'
+services:
+  buritiscript:
+    build: .
+    command:
+      - addgroup -S spring && adduser -S spring -G spring
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/app
+
+  postgres-buritiscript:
+    image: 'postgres:9.6-alpine'
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: buritiscript
+volumes:
+  postgres-buritiscript:
